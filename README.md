@@ -1,12 +1,12 @@
 # Kanban tábla
 
-1. Rövid leírás
+## 1. Rövid leírás
 
-Ez az alkalmazás egy virtuális Kanban táblát valósít meg. https://hu.wikipedia.org/wiki/Kanban
+Ez az alkalmazás egy virtuális Kanban táblát valósít meg. (https://hu.wikipedia.org/wiki/Kanban) 
 
-2. Adatbázis modell
+## 2. Adatbázis modell
 
-3. Funkcionális követelmények
+## 3. Funkcionális követelmények
 
 * A felhasználó regisztrálhat, csatlakozhat csapatokhoz.
 * Minden táblának létezik egy adminja új feladatokat vehet fel, és bárkit hozzárendelhet új feladatokhoz.
