@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <h1>My list of tasks</h1>
+        <form method="post" 
+              th:action="@{/task/add}"
+              th:object="${newTask}">
+               
+            <div id="text">
+                <label for="text">Nev:</label>
+                <input type="text" name="text" placeholder="text" th:field="${newTask.text}" />
+            </div>
+            <div id="description">
+                <label for="description">Leiras:</label>
+                <input type="text" name="description" placeholder="description" th:field="${newTask.description}" />
+            </div>
+            <input type="submit" value="Submit!" />
+            <button type="reset">Cancel</button>
+        </form>
+        <ul>
+            <li th:each="task : ${tasks}">
+                <span th:text="${task.id}"></span>
+                :
+                <span th:text="${task.text}"></span>
+            </li>
+        </ul>
+    </body>
+</html>
