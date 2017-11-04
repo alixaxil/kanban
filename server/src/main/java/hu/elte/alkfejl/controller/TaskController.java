@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import hu.elte.alkfejl.repository.TaskRepository;
 
 @Controller
-@RequestMapping("/todo")
+@RequestMapping("/task")
 public class TaskController {
     
     @Autowired
@@ -27,14 +27,15 @@ public class TaskController {
         Iterable<Task> list = taskRepository.findAll(); //TODO: Find all by the team
         model.addAttribute("tasks", list);
         model.addAttribute("newTask", newTask);
-        return "todolist";
+        return "tasklist";
     }
+   
     
-    @Role({User.Role.ADMIN})
-    @PostMapping("/add")
+    @Role({User.Role.USER, User.Role.ADMIN})
+    @PostMapping("/list")
     public String addTodo(@ModelAttribute Task newTask) {
         newTask.setAssignee("semmi");
         taskRepository.save(newTask);
-        return "redirect:/todo/list";
+        return "redirect:/task/list";
     }
 }
