@@ -18,30 +18,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Task extends BaseEntity {
+public class Team extends BaseEntity{
     @Column(nullable = false)
-    private String text;
+    private String name;
     
-    @Column(nullable = false)
-    private String description;
+
+    @OneToMany(targetEntity = Task.class,
+            cascade = CascadeType.ALL,
+            mappedBy = "team")
+    private List<Task> tasks;
     
-    @Column(nullable = false)
-    private Progress progress;
-   
-    public enum Progress {
-        BACKLOG, IN_PROGRESS, TEST, BLOCKED, DONE
-    }
-    
-    
-    
+    // TODO: join teams with tasks and members
     //@JoinColumn
-    //@OneToOne(targetEntity = User.class)
-    @Column(nullable = true)
-    private String assignee;
-    
-    @JoinColumn
-    @ManyToOne(targetEntity = Team.class)
-    private Team team;
-   
+    //@OneToMany(targetEntity = User.class)
+    //@Column(nullable = true)
+    //private List<User> members;
 }

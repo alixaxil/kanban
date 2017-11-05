@@ -39,10 +39,11 @@ public class AuthController {
             System.out.println("Login successful");
             System.out.println(login.get().toString());
             sessionService.setCurrentUser(login.get());
+            return "redirect:/team/list";
         } else {
             System.out.println("Login failed");
+            return "redirect:/auth/login";
         }
-        return "redirect:/auth/login";
     }
     
     @GetMapping("/register")
