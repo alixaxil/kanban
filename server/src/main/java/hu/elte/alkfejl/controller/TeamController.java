@@ -44,4 +44,5 @@ public class TeamController {
         teamRepository.save(newTeam);
         return "redirect:/team/list";
     }
+    
 }

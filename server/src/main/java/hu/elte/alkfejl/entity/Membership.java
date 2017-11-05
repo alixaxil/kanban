@@ -5,7 +5,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,19 +18,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Team extends BaseEntity{
-    @Column(nullable = false)
-    private String name;
-    
+@EqualsAndHashCode(callSuper = true)
+public class Membership extends BaseEntity {
 
-    @OneToMany(targetEntity = Task.class,
-            cascade = CascadeType.ALL,
-            mappedBy = "team")
-    private List<Task> tasks;
+    @ManyToOne(targetEntity = User.class)
+    private User user;
     
-
-    @OneToMany(targetEntity = Membership.class,
-             cascade = CascadeType.ALL,
-            mappedBy = "team")
-    private List<Membership> memberships;
+    @ManyToOne(targetEntity = Team.class)
+    private Team team;
+   
 }

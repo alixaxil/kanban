@@ -34,11 +34,9 @@ public class Task extends BaseEntity {
     }
     
     
-    
     //@JoinColumn
-    //@OneToOne(targetEntity = User.class)
-    @Column(nullable = true)
-    private String assignee;
+    @OneToOne(targetEntity = User.class)
+    private User assignee;
     
     @JoinColumn
     @ManyToOne(targetEntity = Team.class)
