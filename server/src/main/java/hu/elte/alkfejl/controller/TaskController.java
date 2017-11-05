@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import hu.elte.alkfejl.repository.TaskRepository;
 import hu.elte.alkfejl.repository.TeamRepository;
 import hu.elte.alkfejl.service.SessionService;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -122,8 +121,9 @@ public class TaskController {
         Task task = taskRepository.findOne(taskId);
         Team team = task.getTeam();
         if(getUsers(team.getMemberships()).contains(user)){
-        task.setAssignee(user);
-        System.out.println("Assigned");
+            task.setAssignee(user);
+            taskRepository.save(task);
+            System.out.println("Assigned");
         } else {
             System.out.println("You are not a member of this team!");
         }
@@ -143,6 +143,7 @@ public class TaskController {
         
         //if(getUsers(team.getMemberships()).contains(user)){
             task.setProgress(progress);
+            taskRepository.save(task);
         //} else {
             //System.out.println("You are not a member of this team!");
         //}
