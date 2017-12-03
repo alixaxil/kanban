@@ -1,0 +1,9 @@
+<div class="page-body" id="teams-page">
+<h2 class="mat-h2">Teams:</h2>
+<mat-list>
+  <mat-list-item 
+     *ngFor="let member of allteams" routerLink="/teams/{{team.id}}">
+       {{team.name}}
+    </mat-list-item>
+</mat-list>
+</div>
