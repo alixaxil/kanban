@@ -2,8 +2,11 @@
 <h2 class="mat-h2">Teams:</h2>
 <mat-list>
   <mat-list-item 
-     *ngFor="let member of allteams" routerLink="/teams/{{team.id}}">
-       {{team.name}}
+     *ngFor="let member of teams" routerLink="/teams/{{member.id}}">
+       {{member.name}}
+       
     </mat-list-item>
 </mat-list>
 </div>
+
+<!--routerLink="/teams/{{team.id}}"-->

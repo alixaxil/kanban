@@ -10,16 +10,18 @@ export class Task {
     public id: number;
     private description: String;
     public progress: Progress;
+    public prog: String
     private user: User = null;
-    private team: Team = null;
+    //private team: Team = null;
     
     public constructor(
-      description?: String, progress?: Progress, user?: User, id?: number, team?: Team
+      description?: String, prog?: String, user?: User, id?: number/*, team?: Team*/
     ) {
       this.description = description;
-      this.progress = progress;
+      this.prog = prog;
+      //this.progress = progress;
       this.user = user;
-      this.team = team;
+      //this.team = team;
     }
 
     public getId(): number {

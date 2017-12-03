@@ -4,7 +4,8 @@
     <input matInput #teamName type="text" placeholder="Team Name">
   </mat-form-field>
   <br>
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary"
+  (click)="clickButton(teamName.value, countId)">
     Create
   </button>
 </div>

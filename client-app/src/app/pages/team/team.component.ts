@@ -23,13 +23,13 @@ export class TeamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id: number = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
+    /*const id: number = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
     this.allTeamsService.getTeamById(id).subscribe((team) => {
       this.team = team;
       this.userService.getUsersByTeam(team.id).subscribe((users) => {
         this.users = users;
       })
-    });
+    });*/
 
   }
 
