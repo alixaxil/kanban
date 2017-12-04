@@ -32,3 +32,14 @@ Az alábbi hívások csak bejelentkezés után használhatóak:
 * GET /task/subscribe?teamName={ÉRVÉNYES_CSAPAT_NÉV} - csapathoz való csatlakozás bejelentkezett felhasználóként, ez egy olyan html oldalra irányít, amin üdvözöljük a felhasználót a csapatban (template: hello.html)
 * GET /task/assign?taskId={ÉRVÉNYES_FELADAT_AZONOSÍTÓ} - feladathoz a bejelentkezett felhasználót rendeli
 * GET /task/progress?taskId={ÉRVÉNYES_FELADAT_AZONOSÍTÓ}&progress={FELADAT_HELYE} - a megfelelő azonosítójú feladatot BACKLOG/IN_PROGRESS/TEST/BLOCKED/DONE állapothoz rendeljük
+
+
+## Kliens
+
+### CLIENT APP
+* /register - a regisztrációs mezők (username, email, password) kitöltésével regisztrálhatunk rendszerbe.
+* /login - regisztrált felhasználó beléphet a rendszerbe
+* /create - a felhasználó, szerepkörétől függően, új csapatot hozhat létre
+* /teams - a felhasználó, szerepkörétől függően megtekintheti a csapatokat és a hozzák tartozó feladatokat
+* /team/?teamid - a felhasználó, a választott csapathoz tartozó feladatok állapotát módosíthatja és új feladatokat vehet fel
+* /team/?teamid&taskid - a felhasználó az adott feladathoz tartozó leírásokat szerkesztheti, és más felhasználók közül rendelhet hozzá
