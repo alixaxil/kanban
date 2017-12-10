@@ -9,15 +9,14 @@ export class User {
     private name: String;
     private email: String;
     private password: String;
-    //public role: Role;
-    public r: String;
+    public role: Role;
 
-    constructor(id?: number, name?: String, email?: String, r?:String, password?: String) {
+    constructor(id?: number, name?: String, email?: String, role?: Role, password?: String) {
+        this.id = id;
         this.name = name || "";
         this.password = password || "";
         this.email = email || "";
-        //this.role = role || Role.GUEST;
-        this.r = r;
+        this.role = role || Role.GUEST;
     }
 
     getname(): String {
@@ -35,13 +34,5 @@ export class User {
     setpassword(value: String) {
         this.password = value;
     }
-
-    /*getrole(): Role {
-        return this.role;
-    }
-
-    setrole(value: Role) {
-        this.role = value;
-    }*/
 }
 

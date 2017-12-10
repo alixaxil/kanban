@@ -3,25 +3,26 @@ import { Team } from './team';
 
 export enum Progress {
     BACKLOG, IN_PROGRESS, TEST, BLOCKED, DONE
-  }
+}
 
 export class Task {
 
     public id: number;
-    private description: String;
-    public progress: Progress;
-    public prog: String
-    private user: User = null;
-    //private team: Team = null;
-    
+    public description: String;
+    public progress: Progress = Progress.IN_PROGRESS;
+    public teamID: number;
+    public userID: number;
+    public overAll: String;
+
     public constructor(
-      description?: String, prog?: String, user?: User, id?: number/*, team?: Team*/
+        id?: number,
+        description?: String, teamID?: number/*, team?: Team*/
     ) {
-      this.description = description;
-      this.prog = prog;
-      //this.progress = progress;
-      this.user = user;
-      //this.team = team;
+        this.id = id;
+        this.description = description;
+        this.teamID = teamID;
+        this.progress = Progress.IN_PROGRESS;
+        this.overAll = this.toString();
     }
 
     public getId(): number {
@@ -33,12 +34,12 @@ export class Task {
     }
 
     public toString(): string {
-        return this.description + ' \n ' + this.progress;
+        return this.description + ' ............. ' + this.progress.toString();
     }
 
     public getProgress(): Progress {
         return this.progress;
     }
-    
+
 }
 
