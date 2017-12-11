@@ -1,4 +1,18 @@
-<div id="page-wrapper">
-  <app-menu></app-menu>
-  <router-outlet></router-outlet>
-</div>
+<mat-toolbar color="primary">
+  KANBAN
+  <span class="left">
+      <button mat-button routerLink="/teams">TEAMS</button>
+      <!--<button mat-button routerLink="/">Családtagok</button>-->
+  </span>
+ <span class="right">
+      <button  mat-button routerLink="/login">
+        LOGIN
+      </button>
+      <button  mat-button routerLink="/register">
+        REGISTER
+    </button>
+
+  </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

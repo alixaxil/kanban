@@ -1,46 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { UiModule } from './modules/ui/ui.module';
+import { AppRouterModule } from './modules/app-router/app-router.module';
+
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
-import {MaterialItemsModule} from "./MaterialItemsModule";
-
-import  {appRoutes} from './routes';
-import { RouteGuard } from './route.guard';
-import {AuthService} from "./services/auth.service";
-import { TeamListComponent } from './pages/team-list/team-list.component';
-import { CreateTeamComponent } from './pages/create-team/create-team.component';
-import { TeamComponent } from './pages/team/team.component';
+import { LoginViewComponent } from './components/login-view/login-view.component';
+import { RegisterViewComponent } from './components/register-view/register-view.component';
+import { TeamsViewComponent } from './components/teams-view/teams-view.component';
+import { TeamViewComponent } from './components/team-view/team-view.component';
+import {TeamsService} from './services/teams.service';
+import { TaskViewComponent } from './components/task-view/task-view.component';
+import { TaskService } from './services/task.service';
+import { TeamService } from './services/team.service';
+//import { HttpClientModule } from '@angular/common/http';
+//import {HttpModule} from '@angular/http';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    LoginComponent,
-    RegisterComponent,
-    TeamListComponent,
-    CreateTeamComponent,
-    TeamComponent
+    LoginViewComponent,
+    RegisterViewComponent,
+    TeamsViewComponent,
+    TeamViewComponent,
+    TaskViewComponent,
+    
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule,
-    MaterialItemsModule
+    UiModule,
+    AppRouterModule
+    //HttpClientModule,
+    //HttpModule
   ],
-  providers: [AuthService, RouteGuard],
+  providers: [TeamsService, TeamService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

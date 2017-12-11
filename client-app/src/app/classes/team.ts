@@ -2,12 +2,12 @@ import { User } from '../classes/user';
 import { Task } from './task';
 
 export class Team {
-    public id: number;
+   public id: number;
     public name: String;
     public users: User[];
     public tasks: Task[];
 
-    constructor(id?: number,name?: String) {
+    constructor(id?: number, name?: String) {
         this.id = id;
         this.name = name;
     }
@@ -29,5 +29,9 @@ export class Team {
 
     public addTask(task:Task) {
         this.tasks.push(task);
+    }
+
+    public getTasksNumber() : number {
+        return this.tasks.length;
     }
 }

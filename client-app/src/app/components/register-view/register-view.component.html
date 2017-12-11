@@ -1,0 +1,30 @@
+<div class="page-body" id="register-page">
+<mat-card>
+    <mat-card-content>
+    <h2 class="mat-h2">Register</h2>
+    <form novalidate>
+      <div class="form-control">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" formControlName="username">
+          
+        </mat-form-field>
+      </div>
+  
+      <div class="form-control">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password" type="password">
+        </mat-form-field>
+      </div>
+  
+      <div class="form-control">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" formControlName="email" type="email">
+
+        </mat-form-field>
+      </div>
+  
+      <button mat-raised-button class="mat-primary" (click)="submit()" >Register</button>
+    </form>
+    </mat-card-content>
+    </mat-card>
+  </div>
