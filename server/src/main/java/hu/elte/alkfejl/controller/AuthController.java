@@ -5,12 +5,14 @@ import hu.elte.alkfejl.repository.UserRepository;
 import hu.elte.alkfejl.service.SessionService;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/auth")
@@ -28,9 +30,9 @@ public class AuthController {
         return "login";
     }
     
-    @PostMapping("/login")
-    public String postLogin(
-            @ModelAttribute User loginUser) {
+    @RequestMapping("/login")
+    public ResponseEntity<User> postLogin(
+            @RequestBody User loginUser) {
         Optional<User> login = 
             userRepository.findByUsernameAndPassword(
             loginUser.getUsername(), 
@@ -39,10 +41,10 @@ public class AuthController {
             System.out.println("Login successful");
             System.out.println(login.get().toString());
             sessionService.setCurrentUser(login.get());
-            return "redirect:/team/list";
+            return ResponseEntity.ok(login.get());
         } else {
             System.out.println("Login failed");
-            return "redirect:/auth/login";
+            return ResponseEntity.status(403).build();
         }
     }
     
@@ -60,9 +62,18 @@ public class AuthController {
     }
     
     @RequestMapping("/logout")
-    public String logout() {
+    public ResponseEntity logout() {
         sessionService.setCurrentUser(null);
-        return "redirect:/auth/login";
+        return ResponseEntity.ok(false);
+    }
+    
+    @RequestMapping("/user")
+    public ResponseEntity getUser() {
+        if (sessionService.getCurrentUser() == null){
+            return ResponseEntity.ok(false);
+        } else {
+            return ResponseEntity.ok(sessionService.getCurrentUser());
+        }
     }
     
     @RequestMapping("/debug")
