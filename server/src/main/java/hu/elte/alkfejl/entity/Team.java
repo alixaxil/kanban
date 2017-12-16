@@ -1,5 +1,6 @@
 package hu.elte.alkfejl.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,6 +28,7 @@ public class Team extends BaseEntity{
     @OneToMany(targetEntity = Task.class,
             cascade = CascadeType.ALL,
             mappedBy = "team")
+    @JsonIgnore
     private List<Task> tasks;
     
 

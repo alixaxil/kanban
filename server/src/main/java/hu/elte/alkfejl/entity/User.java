@@ -1,5 +1,6 @@
 package hu.elte.alkfejl.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -34,8 +35,9 @@ public class User extends BaseEntity {
     private Role role;
     
     @OneToMany(targetEntity = Membership.class,
-             cascade = CascadeType.ALL,
+            cascade = CascadeType.ALL,
             mappedBy = "user")
+    @JsonIgnore
     private List<Membership> memberships;
     
     public enum Role {

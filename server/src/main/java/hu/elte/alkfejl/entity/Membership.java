@@ -1,5 +1,6 @@
 package hu.elte.alkfejl.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,9 +23,11 @@ import lombok.NoArgsConstructor;
 public class Membership extends BaseEntity {
 
     @ManyToOne(targetEntity = User.class)
+    @JsonIgnore
     private User user;
     
     @ManyToOne(targetEntity = Team.class)
+    @JsonIgnore
     private Team team;
    
 }
