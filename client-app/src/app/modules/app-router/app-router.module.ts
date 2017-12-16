@@ -8,6 +8,7 @@ import { RegisterViewComponent } from '../../components/register-view/register-v
 import { TeamsViewComponent } from '../../components/teams-view/teams-view.component';
 import { TeamViewComponent } from '../../components/team-view/team-view.component';
 import { TaskViewComponent } from '../../components/task-view/task-view.component';
+import { AuthService } from '../../services/auth.service';
 
 
 const appRoutes: Routes = [
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  declarations: []
+  declarations: [],
+  providers: [ AuthService]
 })
 export class AppRouterModule { }

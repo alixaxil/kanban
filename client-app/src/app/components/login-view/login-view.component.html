@@ -7,17 +7,17 @@
   <form novalidate>
     <div class="form-control">
       <mat-form-field>
-        <input matInput placeholder="Username" formControlName="username">
+        <input matInput placeholder="Username" formControlName="username" #userNameInput>
       </mat-form-field>
     </div>
 
     <div class="form-control">
       <mat-form-field>
-        <input matInput placeholder="Password" formControlName="password" type="password">
+        <input matInput placeholder="Password" formControlName="password" type="password" #passwordInput>
       </mat-form-field>
     </div>
 
-    <button mat-raised-button class="mat-primary" (click)="submit()">Login</button>
+    <button mat-raised-button class="mat-primary" (click)="tryLogin(userNameInput.value, passwordInput.value)">Login</button>
   </form>
   </mat-card-content>
 </mat-card>

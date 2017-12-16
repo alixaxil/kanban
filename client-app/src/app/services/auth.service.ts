@@ -1,42 +1,31 @@
 import { Injectable } from '@angular/core';
-
-import {Http} from "@angular/http";
-import {User} from "../classes/user";
-import {Routes, Server} from "../utils/ServerRoutes";
+import { User } from '../classes/user';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  user: User;
-  isLoggedIn: boolean = false;
 
-  constructor(private http: Http) {
-    this.user = new User();
+  private static user: User = null;
+  
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  public login(username: string, password: string): void {
+    //const result = new Subject<boolean>();
+     this.http.post( 'http://localhost:4200/api/auth/login', {"username": "admin", "password": "admin"});
+     //.subscribe(data => {console.log(data);});
+    /*.subscribe((user) => {
+      AuthService.user = user as User;
+      result.next(true);
+    }, (error) => {
+      AuthService.user = null as User;
+      result.next(false);
+    });
+    return result;  }
+    
+}*/
   }
-
-  login(user: User) {
-    /*return this.http.post(Server.routeTo(Routes.LOGIN), user)
-      .map(res => {
-        this.isLoggedIn = true;
-        this.user = res.json();*/
-        return this.user;
-     // })
-  }
-
-  register(user: User) {
-    /*return this.http.post(Server.routeTo(Routes.REGISTER), user)
-      .map(res => {
-        this.isLoggedIn = true;
-        this.user = res.json();*/
-        return this.user;
-     // })
-  }
-
-  logout() {
-    /*return this.http.get(Server.routeTo(Routes.LOGOUT))
-      .map(res => {
-        this.user = new User();
-        this.isLoggedIn = false;
-      })}*/
-
-    }
-  }
+}

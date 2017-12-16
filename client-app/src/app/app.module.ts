@@ -14,8 +14,9 @@ import {TeamsService} from './services/teams.service';
 import { TaskViewComponent } from './components/task-view/task-view.component';
 import { TaskService } from './services/task.service';
 import { TeamService } from './services/team.service';
-//import { HttpClientModule } from '@angular/common/http';
-//import {HttpModule} from '@angular/http';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 
 
@@ -32,11 +33,11 @@ import { TeamService } from './services/team.service';
   imports: [
     BrowserModule,
     UiModule,
-    AppRouterModule
-    //HttpClientModule,
-    //HttpModule
+    AppRouterModule,
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [TeamsService, TeamService],
+  providers: [TeamsService, TeamService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

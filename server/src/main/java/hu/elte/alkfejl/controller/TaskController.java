@@ -23,7 +23,7 @@ import java.util.Optional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/task")
+@RequestMapping("/api/task")
 public class TaskController {
     
     @Autowired
