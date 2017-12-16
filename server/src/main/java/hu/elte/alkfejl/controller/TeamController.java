@@ -17,6 +17,7 @@ import hu.elte.alkfejl.repository.TeamRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
 
 @Controller
 @RequestMapping("/api/team")
@@ -26,7 +27,7 @@ public class TeamController {
     @Autowired
     private TeamRepository teamRepository;
     
-    @Role({User.Role.USER, User.Role.ADMIN})
+    //@Role({User.Role.USER, User.Role.ADMIN})
     @GetMapping("/list")
     public String list(Model model) {
         Team newTeam = new Team();
@@ -36,13 +37,13 @@ public class TeamController {
         return "teamlist";
     }
 
-    @Role({User.Role.USER, User.Role.ADMIN})
-    @PostMapping("/list")
-    public String addTask(@ModelAttribute Team newTeam) {
+    //@Role({User.Role.USER, User.Role.ADMIN})
+    @RequestMapping("/list")
+    public ResponseEntity<Team> addTask(@RequestBody Team newTeam) {
         List<Task> tasks = new ArrayList<>();
         newTeam.setTasks(tasks);
         teamRepository.save(newTeam);
-        return "redirect:/team/list";
+        return ResponseEntity.ok(newTeam);
     }
     
 }

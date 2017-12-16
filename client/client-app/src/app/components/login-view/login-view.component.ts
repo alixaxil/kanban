@@ -22,15 +22,14 @@ export class LoginViewComponent implements OnInit {
   }
 
   private tryLogin(username: string, password: string) {
-    this.authService.login(username, password);
-    /*.subscribe((success: boolean) => {
+    this.authService.login(username, password).subscribe((success: boolean) => {
       if (success) {
         const redirectTo: string = this.route.snapshot.queryParamMap.get('from') || '';
         this.router.navigate([redirectTo]);
       } else {
         this.error = 'Hibás felhasnzálónév vagy jelszó';
       }
-    });*/
+    });
   }
 
 }

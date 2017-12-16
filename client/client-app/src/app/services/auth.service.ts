@@ -13,19 +13,18 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  public login(username: string, password: string): void {
-    //const result = new Subject<boolean>();
-     this.http.post( 'http://localhost:8080/api/auth/login', {"username": "admin", "password": "admin"});
-     //.subscribe(data => {console.log(data);});
-    /*.subscribe((user) => {
+  public login(username: string, password: string): Observable<boolean> {
+    const result = new Subject<boolean>();
+     this.http.post( 'http://localhost:4200/api/auth/login', {"username": username, "password": password})
+    .subscribe((user) => {
       AuthService.user = user as User;
       result.next(true);
     }, (error) => {
       AuthService.user = null as User;
       result.next(false);
     });
-    return result;  }
+    return result;  
     
-}*/
-  }
+}
+  
 }

@@ -16,20 +16,20 @@ export class TeamsViewComponent implements OnInit {
   @Output()
   public createItem: EventEmitter<Team> = new EventEmitter();
   public teams: Team[];
-  public count = 5;
+  //public count = 5;
 
   constructor(
     private teamsservice: TeamsService) { }
 
-  @Input()
+  //@Input()
 
-  public clickButton(name: string,
+  /*public clickButton(name: string,
   ): void {
     const t = new Team(this.count, name)
     this.createItem.emit(t);
     this.addteam(t);
     this.count++;
-  }
+  }*/
   ngOnInit() {
     this.getTeams();
   }
@@ -39,8 +39,13 @@ export class TeamsViewComponent implements OnInit {
       .subscribe(teams => this.teams = teams);
   }
 
-  addteam(team: Team): void {
-    this.teamsservice.addTeam(team).subscribe();
+  private addTeam(teamName: string): void {
+    this.teamsservice.addTeam(teamName).
+    subscribe(() => {
+      this.teamsservice.getTeams().subscribe((teams: Team[]) => {
+        this.teams = teams;
+      });
+    });
   }
 
 }

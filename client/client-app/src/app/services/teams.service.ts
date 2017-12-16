@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Team } from '../classes/team';
 import { TEAMS } from '../mock-teams';
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Task } from '../classes/task';
@@ -16,10 +16,11 @@ export class TeamsService {
     new Team(3, 'Team3'),
     new Team(4, 'Team4')
   ];
+  
 
 
   constructor(
-    //private httpClient: HttpClient
+    private httpClient: HttpClient
   ) { }
 
   getTeams(): Observable<Team[]> {
@@ -30,8 +31,9 @@ export class TeamsService {
     return of(this.TEAMS.find(team => team.id === id));
   }
 
-  public addTeam(team: Team): Observable<any> {
-    return of(this.TEAMS.push(team));
+  public addTeam(teamName: string): Observable<any> {
+    //return of(this.TEAMS.push(team));
+    return this.httpClient.post("http://localhost:4200/api/team/list", {"name": teamName});
   }
 
   getTasks(): Observable<Task[]> {
