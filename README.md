@@ -23,15 +23,16 @@ Ez az alkalmazás egy virtuális Kanban táblát valósít meg, mely segítség�
 
 ### REST API
 * GET /auth/login - bejelentkező felület megtekintése (template: login.html)
-* POST /auth/login - bejelentkezés, felhasználónév és jelszó megadásával; sikeres bejelentkezés a /team/list-re irányít
+* POST /auth/login - bejelentkezés, felhasználónév és jelszó megadásával
 * GET /auth/register - regisztráló felület megtekintése (template: register.html)
 Az alábbi hívások csak bejelentkezés után használhatóak:
-* GET /team/list - csapatmenedzselő felület megtekintése (template: teamlist.html)
-* POST /team/list - új csapat létrehozása
-* GET /task/list?teamName={VALID_CSAPAT_NÉV} - feladatok listázása csapatonként
-* GET /task/subscribe?teamName={ÉRVÉNYES_CSAPAT_NÉV} - csapathoz való csatlakozás bejelentkezett felhasználóként, ez egy olyan html oldalra irányít, amin üdvözöljük a felhasználót a csapatban (template: hello.html)
-* GET /task/assign?taskId={ÉRVÉNYES_FELADAT_AZONOSÍTÓ} - feladathoz a bejelentkezett felhasználót rendeli
-* GET /task/progress?taskId={ÉRVÉNYES_FELADAT_AZONOSÍTÓ}&progress={FELADAT_HELYE} - a megfelelő azonosítójú feladatot BACKLOG/IN_PROGRESS/TEST/BLOCKED/DONE állapothoz rendeljük
+* GET /team/ - visszaadja a csapatok listáját
+* GET /team/{ÉRVÉNYES_CSAPAT_AZONOSÍTÓ} - visszaadja a csapatot objektumként
+* POST /team/ - új csapat létrehozása, név megadásával
+* GET /task/{ÉRVÉNYES_FELADAT_AZONOSÍTÓ} - azonosító alapján visszaadja a feladatot objektumként
+* GET /task/list/{ÉRVÉNYES_CSAPAT_AZONOSÍTÓ} - feladatok listázása csapatonként
+* POST /task/list/{ÉRVÉNYES_CSAPAT_AZONOSÍTÓ} - feladat hozzáadása
+* GET /task/progress//{ÉRVÉNYES_FELADAT_AZONOSÍTÓ}?progress={FELADAT_HELYE} - a megfelelő azonosítójú feladatot BACKLOG/IN_PROGRESS/TEST/BLOCKED/DONE állapothoz rendeljük
 
 
 ## Kliens
@@ -39,7 +40,6 @@ Az alábbi hívások csak bejelentkezés után használhatóak:
 ### CLIENT APP
 * /register - a regisztrációs mezők (username, email, password) kitöltésével regisztrálhatunk rendszerbe.
 * /login - regisztrált felhasználó beléphet a rendszerbe
-* /create - a felhasználó, szerepkörétől függően, új csapatot hozhat létre
-* /teams - a felhasználó, szerepkörétől függően megtekintheti a csapatokat és a hozzák tartozó feladatokat
+* /teams - a felhasználó, szerepkörétől függően megtekintheti a csapatokat és újat is létrehozhat
 * /team/?teamid - a felhasználó, a választott csapathoz tartozó feladatok állapotát módosíthatja és új feladatokat vehet fel
-* /team/?teamid&taskid - a felhasználó az adott feladathoz tartozó leírásokat szerkesztheti, és más felhasználók közül rendelhet hozzá
+* /team/?teamid/task/?taskid - a felhasználó az adott feladathoz tartozó leírásokat szerkesztheti
