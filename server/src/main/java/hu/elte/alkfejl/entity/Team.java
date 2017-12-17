@@ -35,5 +35,6 @@ public class Team extends BaseEntity{
     @OneToMany(targetEntity = Membership.class,
              cascade = CascadeType.ALL,
             mappedBy = "team")
+    @JsonIgnore
     private List<Membership> memberships;
 }

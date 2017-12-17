@@ -18,6 +18,7 @@ export class TaskViewComponent implements OnInit {
 private teamService: TeamService) { }
 
   ngOnInit() {
+    console.log("Taskview.");
     this.getTask();
   }
 

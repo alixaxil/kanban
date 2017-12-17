@@ -10,10 +10,8 @@ import { LoginViewComponent } from './components/login-view/login-view.component
 import { RegisterViewComponent } from './components/register-view/register-view.component';
 import { TeamsViewComponent } from './components/teams-view/teams-view.component';
 import { TeamViewComponent } from './components/team-view/team-view.component';
-import {TeamsService} from './services/teams.service';
 import { TaskViewComponent } from './components/task-view/task-view.component';
-import { TaskService } from './services/task.service';
-import { TeamService } from './services/team.service';
+import { TaskService, TeamsService, ApiService } from './services/';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import {HttpModule} from '@angular/http';
@@ -37,7 +35,7 @@ import {HttpModule} from '@angular/http';
     HttpClientModule,
     HttpModule
   ],
-  providers: [TeamsService, TeamService, AuthService],
+  providers: [TeamsService, TeamsService, AuthService, ApiService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

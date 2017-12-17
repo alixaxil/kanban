@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Task } from '../classes/task';
 import { TASKS } from '../mock-tasks';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class TeamsService {
@@ -20,20 +21,21 @@ export class TeamsService {
 
 
   constructor(
-    private httpClient: HttpClient
+    private apiService: ApiService
   ) { }
 
   getTeams(): Observable<Team[]> {
-    return of(this.TEAMS);
+    return this.apiService.get('/team')
+    .map(data => data);
   }
 
   getTeamById(id: number): Observable<Team> {
-    return of(this.TEAMS.find(team => team.id === id));
+    return this.apiService.get('/team/' + id)
+    .map(data => data);
   }
 
   public addTeam(teamName: string): Observable<any> {
-    //return of(this.TEAMS.push(team));
-    return this.httpClient.post("http://localhost:4200/api/team/list", {"name": teamName});
+    return this.apiService.post("/team/list", {"name": teamName});
   }
 
   getTasks(): Observable<Task[]> {
