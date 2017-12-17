@@ -17,6 +17,10 @@
     width: 25%;
 }
 
+.button{
+  color: #0fffff
+}
+
 /* Clear floats after the columns */
 .row:after {
     content: "";

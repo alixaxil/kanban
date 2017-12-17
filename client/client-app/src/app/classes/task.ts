@@ -16,12 +16,12 @@ export class Task {
 
     public constructor(
         
-        description?: String, teamID?: number/*, team?: Team*/
+        text?: String, description?: String, teamID?: number/*, team?: Team*/
     ) {
         this.description = description;
         this.teamID = teamID;
         this.progress = Progress.IN_PROGRESS;
-        this.text = this.toString();
+        this.text = text;
     }
 
     public getId(): number {

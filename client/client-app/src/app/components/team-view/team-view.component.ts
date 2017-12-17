@@ -36,10 +36,10 @@ export class TeamViewComponent implements OnInit {
   }
   @Input()
 
-  public clickButton(desc: string,
+  public clickButton(desc: string, text: string
   ): void {
     console.log("clicky button " + this.teamId);
-    const t = new Task( desc, this.teamId)
+    const t = new Task( text, desc, this.teamId)
     this.createItem.emit(t);
     this.addTask(t);
     this.count++;
