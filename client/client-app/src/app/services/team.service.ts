@@ -34,6 +34,6 @@ export class TeamService {
   }
 
   public getTask(id: number) : Observable<Task> {
-    return this.apiService.get('/team' + id);
+    return this.apiService.get('/task/' + id);
   }
 }

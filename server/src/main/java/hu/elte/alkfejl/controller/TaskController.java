@@ -69,6 +69,11 @@ public class TaskController {
  
     }
    
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> getOne(@PathVariable Long id) {
+        Task item = taskRepository.findOne(id);
+        return ResponseEntity.ok(item);
+    }
     
     @Role({User.Role.USER, User.Role.ADMIN})
     @PostMapping("/list/{id}")
