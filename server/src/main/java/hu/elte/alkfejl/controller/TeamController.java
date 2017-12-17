@@ -42,6 +42,8 @@ public class TeamController {
 
     @PostMapping("")
     public ResponseEntity<Team> create(@RequestBody Team item) {
+		System.out.println("Megjött a team: " + item.getName());
+
         Team saved = teamRepository.save(item);
         return ResponseEntity.ok(saved);
     }

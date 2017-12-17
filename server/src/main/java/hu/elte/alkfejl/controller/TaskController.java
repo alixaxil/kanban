@@ -60,7 +60,6 @@ public class TaskController {
     public ResponseEntity<Iterable<Task>> list(@PathVariable Long id) {
  
             Team requestedTeam = teamRepository.findOne(id);
-        
             System.out.println("Team found: ");
             System.out.println(requestedTeam.getName());
             for (Task task : requestedTeam.getTasks()){
@@ -74,11 +73,13 @@ public class TaskController {
     @Role({User.Role.USER, User.Role.ADMIN})
     @PostMapping("/list/{id}")
     public ResponseEntity<Task> addTask(@RequestBody Task newTask, @PathVariable Long id) {
-      
+      		System.out.println("Megjött a task: " + newTask.getText());
+
         Team team = teamRepository.findOne(id);
+		      		System.out.println("Megtaláltam a teamEt: " + team.getName());
         newTask.setTeam(team);
         newTask.setProgress(Task.Progress.BACKLOG);
-        team.getTasks().add(newTask);
+        team.addTask(newTask);
         taskRepository.save(newTask);
         return ResponseEntity.ok(newTask);
     }
