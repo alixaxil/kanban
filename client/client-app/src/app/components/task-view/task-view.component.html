@@ -1,9 +1,29 @@
 <mat-card class="tasklist">
     <mat-card-content>
       <h3></h3>
-      <mat-list>
-        <mat-list-item></mat-list-item>
-        
-      </mat-list>
-    </mat-card-content>
+
+        <h1>{{task.text}}</h1>
+        <h2>{{task.description}}</h2>
+
+        <mat-form-field>
+            <mat-select [(value)]="selected">
+              <mat-option value="IN_PROGRESS">
+                  IN_PROGRESS
+              </mat-option>
+              <mat-option value="TEST">
+                  TEST
+              </mat-option>
+              <mat-option value="BLOCKES">
+                  BLOCKED
+              </mat-option>
+              <mat-option value="DONE">
+                  DONE
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+    <button mat-raised-button class="mat-primary" 
+    (click)="tryProgressChange(selected)">Change progress</button>
+
+  </mat-card-content>
   </mat-card>

@@ -35,6 +35,10 @@ export class TeamService {
   }
 
   public getTask(id: number) : Observable<Task> {
-    return of(this.TASKS.find(task => task.id === id));
+    return this.apiService.get('/task/' + id);
+  }
+
+  public changeProgress(id: number, progress: string) : Observable<Task> {
+    return this.apiService.get('/task/progress/' + id + '?progress=' + progress);
   }
 }

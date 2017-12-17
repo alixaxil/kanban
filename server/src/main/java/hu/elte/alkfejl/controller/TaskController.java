@@ -105,16 +105,12 @@ public class TaskController {
     }
     
     @Role({User.Role.USER, User.Role.ADMIN})
-    @GetMapping("/progress")
-    public String modifyProgress(@RequestParam(value = "taskId", 
-                                      required = true) Long taskId, 
+    @GetMapping("/progress/{id}")
+    public ResponseEntity<Task> modifyProgress(@PathVariable Long id,
                                 @RequestParam(value = "progress", 
                                       required = true) Task.Progress progress){
         System.out.println(progress);
-        User user = sessionService.getCurrentUser();
-        Task task = taskRepository.findOne(taskId);
-        Team team = task.getTeam();
-        
+        Task task = taskRepository.findOne(id);
         //if(getUsers(team.getMemberships()).contains(user)){
             task.setProgress(progress);
             taskRepository.save(task);
@@ -122,7 +118,7 @@ public class TaskController {
             //System.out.println("You are not a member of this team!");
         //}
         
-        return "redirect:/task/list?teamName="+team.getName();
+        return ResponseEntity.ok(task);
   
     }
    
