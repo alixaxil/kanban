@@ -1,3 +1,30 @@
 #team-page {
     text-align: center;
   }
+
+ .task{
+    background-color: #333333; 
+    color: #ffffff;
+    padding: 2em; 
+    height: 8em;
+    width: 16em;  
+    display: block;
+    margin-bottom: 1em;
+  }
+
+.column {
+    float: left;
+    width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+  mat-grid-list{
+    height: 100%;
+    width: 100%;
+  }

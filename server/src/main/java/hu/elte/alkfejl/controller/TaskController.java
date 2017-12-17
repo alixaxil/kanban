@@ -72,15 +72,15 @@ public class TaskController {
    
     
     @Role({User.Role.USER, User.Role.ADMIN})
-    @PostMapping("/list")
-    public String addTask(@ModelAttribute Task newTask) {
+    @PostMapping("/list/{id}")
+    public ResponseEntity<Task> addTask(@RequestBody Task newTask, @PathVariable Long id) {
       
-        //newTask.setAssignee("semmi");
+        Team team = teamRepository.findOne(id);
         newTask.setTeam(team);
         newTask.setProgress(Task.Progress.BACKLOG);
         team.getTasks().add(newTask);
         taskRepository.save(newTask);
-        return "redirect:/task/list?teamName="+team.getName();
+        return ResponseEntity.ok(newTask);
     }
     
     

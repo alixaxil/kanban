@@ -1,7 +1,7 @@
 <div class="page-body" id="team-page">
 <mat-card class="addform">
   <mat-card-content>
-      <h3>ADD NEW TASK:</h3>
+      <h2>ADD NEW TASK:</h2>
       <mat-form-field>
           <input matInput #taskDesc type="text" placeholder="DESCRIPTION">
       </mat-form-field>
@@ -11,20 +11,70 @@
   </mat-card-content>
 </mat-card>
 <br>
-<mat-card class="tasklist">
-  <mat-card-content>
-    <h3>TASKS: </h3>
-    <mat-grid-list cols=5 rowHeight="1:1">
-      <mat-grid-tile *ngFor="let task of tasks">
-        IN_PROGRESS: 
-        <any ng-if="{{task.progress}}=IN_PROGRESS">
-        {{task.text}}
-        </any>
-     </mat-grid-tile>
-  </mat-grid-list>
+    <div class="column" >
+        <h3>BACKLOG</h3>
+      <div *ngFor="let task of tasks">
+        <div class="task" *ngIf="task.progress == Progress[0]">
+          <button mat-raised-button  routerLink="task/{{task.id}}">{{task.text}}</button>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 Description
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{task.description}}</p>
+            </mat-expansion-panel>
+          </div>
+      </div>
+    </div> 
+    <div class="column" >
+        <h3>IN_PROGRESS</h3>
+      <div  *ngFor="let task of tasks">
+        <div class="task"   *ngIf="task.progress == Progress[1]">
+          <button mat-raised-button  routerLink="task/{{task.id}}">{{task.text}}</button>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                 Description
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{task.description}}</p>
+            </mat-expansion-panel>
+        </div>
+        </div>
+    </div> 
+    <div class="column" >
+      <h3>TEST</h3>
+      <div  *ngFor="let task of tasks">
+        <div class="task" *ngIf="task.progress == Progress[2]">
+            <button mat-raised-button  routerLink="task/{{task.id}}">{{task.text}}</button>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                   Description
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{task.description}}</p>
+              </mat-expansion-panel>
+        </div>
 
-  </mat-card-content>
-
-</mat-card>
+        </div>
+    </div>
+    <div class="column" >
+      <h3>BLOCKED</h3>
+      <div  *ngFor="let task of tasks">
+        <div class="task" *ngIf="task.progress == Progress[3]">
+            <button mat-raised-button  routerLink="task/{{task.id}}">{{task.text}}</button>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                   Description
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{task.description}}</p>
+              </mat-expansion-panel>
+        </div>
+        </div>
+    </div> 
 
 </div>

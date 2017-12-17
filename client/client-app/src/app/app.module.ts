@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { UiModule } from './modules/ui/ui.module';
 import { AppRouterModule } from './modules/app-router/app-router.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 import { AppComponent } from './app.component';

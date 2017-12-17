@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../../services/teams.service';
 import { Team } from '../../classes/team';
-import { Task } from '../../classes/task';
+import { Task, Progress } from '../../classes/task';
 import { TaskService } from '../../services/task.service';
 import { TeamService } from '../../services/team.service';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -26,6 +26,7 @@ export class TeamViewComponent implements OnInit {
   team: Team;
   count: number = 8;
 
+  public Progress = Progress; //for enum checking
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,7 +37,7 @@ export class TeamViewComponent implements OnInit {
 
   public clickButton(desc: string,
   ): void {
-    const t = new Task(this.count, desc, this.team.id)
+    const t = new Task( desc, this.team.id)
     this.createItem.emit(t);
     this.addTask(t);
     this.count++;

@@ -12,17 +12,16 @@ export class Task {
     public progress: Progress = Progress.IN_PROGRESS;
     public teamID: number;
     public userID: number;
-    public overAll: String;
+    public text: String;
 
     public constructor(
-        id?: number,
+        
         description?: String, teamID?: number/*, team?: Team*/
     ) {
-        this.id = id;
         this.description = description;
         this.teamID = teamID;
         this.progress = Progress.IN_PROGRESS;
-        this.overAll = this.toString();
+        this.text = this.toString();
     }
 
     public getId(): number {
@@ -40,6 +39,11 @@ export class Task {
     public getProgress(): Progress {
         return this.progress;
     }
+
+    public getProgressText(): string {
+        return this.progress.toString();
+    }
+
 
 }
 
