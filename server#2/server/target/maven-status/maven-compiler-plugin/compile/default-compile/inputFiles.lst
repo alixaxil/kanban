@@ -1,0 +1,16 @@
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\entity\BaseEntity.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\service\SessionService.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\repository\TaskRepository.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\controller\TeamController.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\annotation\Role.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\repository\TeamRepository.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\controller\TaskController.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\controller\HelloController.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\AlkfejlApplication.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\entity\Task.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\controller\AuthController.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\entity\User.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\annotation\AuthInterceptor.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\entity\Team.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\config\SecurityConfig.java
+C:\Users\MARCI\Documents\ELTE\AlkFejl\12.17\kanban-master\server\src\main\java\hu\elte\alkfejl\repository\UserRepository.java

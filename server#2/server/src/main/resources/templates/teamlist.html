@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <h1>Manage teams</h1>
+        <form method="post" 
+              th:action="@{/team/list}"
+              th:object="${newTeam}">
+               
+            <div id="text">
+                <label for="text">Nev:</label>
+                <input type="text" name="text" placeholder="text" th:field="${newTeam.name}" />
+            </div>
+            <input type="submit" value="Submit!" />
+            <button type="reset">Cancel</button>
+        </form>
+        <ul>
+            <li th:each="team : ${teams}">
+                <span th:text="${team.id}"></span>
+                :
+                <span th:text="${team.name}"></span>
+            </li>
+        </ul>
+    </body>
+</html>
