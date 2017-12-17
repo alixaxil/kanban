@@ -40,7 +40,8 @@ export class TeamsViewComponent implements OnInit {
   }
 
   private addTeam(teamName: string): void {
-    this.teamsservice.addTeam(teamName).
+    let team = new Team(teamName);
+    this.teamsservice.addTeam(team).
     subscribe(() => {
       this.teamsservice.getTeams().subscribe((teams: Team[]) => {
         this.teams = teams;

@@ -7,9 +7,10 @@ export class Team {
     public users: User[];
     public tasks: Task[];
 
-    constructor(id?: number, name?: String) {
-        this.id = id;
+    constructor(name?: String) {
         this.name = name;
+        this.users = new Array<User>();
+        this.tasks = new  Array<Task>();
     }
 
     public addUsers(users: User[]) {

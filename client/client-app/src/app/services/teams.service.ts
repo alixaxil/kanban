@@ -12,11 +12,13 @@ import { ApiService } from './api.service';
 @Injectable()
 export class TeamsService {
   TEAMS: Team[] = [
+    /*
     new Team(1, 'Team1'),
     new Team(2, 'Team2'),
     new Team(3, 'Team3'),
     new Team(4, 'Team4')
-  ];
+  */
+];
   
 
 
@@ -34,8 +36,8 @@ export class TeamsService {
     .map(data => data);
   }
 
-  public addTeam(teamName: string): Observable<any> {
-    return this.apiService.post("/team/list", {"name": teamName});
+  public addTeam(team: Team): Observable<any> {
+    return this.apiService.post("/team/", team);
   }
 
   getTasks(id: number): Observable<Task[]> {

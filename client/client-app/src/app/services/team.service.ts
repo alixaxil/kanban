@@ -30,10 +30,11 @@ export class TeamService {
 
   public addTask(task: Task) : Observable<any> {
     //return of(this.TASKS.push(task));
+    console.log("Team service posting " + JSON.stringify(task));
     return this.apiService.post('/task/list/' + task.teamID, task);
   }
 
   public getTask(id: number) : Observable<Task> {
-    return this.apiService.get('/task/' + id);
+    return of(this.TASKS.find(task => task.id === id));
   }
 }

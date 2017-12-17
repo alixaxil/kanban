@@ -24,6 +24,7 @@ export class TeamViewComponent implements OnInit {
   public createItem: EventEmitter<Task> = new EventEmitter();
   public tasks: Task[];
   team: Team;
+  teamId: number;
   count: number = 8;
 
   public Progress = Progress; //for enum checking
@@ -37,7 +38,8 @@ export class TeamViewComponent implements OnInit {
 
   public clickButton(desc: string,
   ): void {
-    const t = new Task( desc, this.team.id)
+    console.log("clicky button " + this.teamId);
+    const t = new Task( desc, this.teamId)
     this.createItem.emit(t);
     this.addTask(t);
     this.count++;
@@ -45,16 +47,19 @@ export class TeamViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.teamId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));    
     this.getTeam();
     this.getTasks();
   }
   addTask(task: Task): void {
-    this.teamService.addTask(task).subscribe();
+    this.teamService.addTask(task).subscribe(
+      data => console.log("Added task")
+    );
   }
 
   getTeam(): void {
     const id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.teamsservice.getTeamById(id)
+    this.teamsservice.getTeamById(this.teamId)
       .subscribe(team => this.team = team);
   }
 
