@@ -1,6 +1,5 @@
 package hu.elte.alkfejl.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -13,10 +12,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -33,13 +35,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
-    
-    @OneToMany(targetEntity = Membership.class,
-            cascade = CascadeType.ALL,
-            mappedBy = "user")
-    @JsonIgnore
-    private List<Membership> memberships;
-    
+
     public enum Role {
         GUEST, USER, ADMIN
     }

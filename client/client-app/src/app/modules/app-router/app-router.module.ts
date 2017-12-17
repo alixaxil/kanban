@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginViewComponent } from '../../components/login-view/login-view.component';
 import { RegisterViewComponent } from '../../components/register-view/register-view.component';
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     RouterModule
   ],
   declarations: [],
-  providers: [ AuthService]
+  providers: [ AuthService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppRouterModule { }

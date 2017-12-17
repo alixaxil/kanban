@@ -38,8 +38,8 @@ export class TeamsService {
     return this.apiService.post("/team/list", {"name": teamName});
   }
 
-  getTasks(): Observable<Task[]> {
-    return of(TASKS);
+  getTasks(id: number): Observable<Task[]> {
+    return this.apiService.get('/task/list/'+id);
   }
 
   getTask(id: number): Observable<Task> {

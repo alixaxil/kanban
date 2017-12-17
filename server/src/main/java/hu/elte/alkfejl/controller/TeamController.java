@@ -46,23 +46,4 @@ public class TeamController {
         return ResponseEntity.ok(saved);
     }
     
-    //@Role({User.Role.USER, User.Role.ADMIN})
-    @GetMapping("/list")
-    public String list(Model model) {
-        Team newTeam = new Team();
-        Iterable<Team> list = teamRepository.findAll();
-        model.addAttribute("teams", list);
-        model.addAttribute("newTeam", newTeam);
-        return "teamlist";
-    }
-
-    //@Role({User.Role.USER, User.Role.ADMIN})
-    @RequestMapping("/list")
-    public ResponseEntity<Team> addTask(@RequestBody Team newTeam) {
-        List<Task> tasks = new ArrayList<>();
-        newTeam.setTasks(tasks);
-        teamRepository.save(newTeam);
-        return ResponseEntity.ok(newTeam);
-    }
-    
 }

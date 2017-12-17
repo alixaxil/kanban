@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../classes/task';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
+import { Task } from '../classes/task';
+import { TASKS } from '../mock-tasks';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class TeamService {
@@ -15,11 +18,12 @@ export class TeamService {
     new Task(7, 'Client support',3)
   ];
 
-  constructor() { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   public getTasks(id: number) : Observable<Task[]> {
-    return of(this.TASKS.filter(
-      task => task.teamID === id));
+    return this.apiService.get('/task/list/'+id);
   }
 
   public addTask(task: Task) : Observable<any> {

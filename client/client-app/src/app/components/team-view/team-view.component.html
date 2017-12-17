@@ -14,13 +14,17 @@
 <mat-card class="tasklist">
   <mat-card-content>
     <h3>TASKS: </h3>
-    <mat-list>
-      <mat-list-item
-          *ngFor="let task of tasks" >
-         
-          <button mat-raised-button  routerLink="task/{{task.id}}">{{task.overAll}}</button>
-      </mat-list-item>
-    </mat-list>
+    <mat-grid-list cols=5 rowHeight="1:1">
+      <mat-grid-tile *ngFor="let task of tasks">
+        IN_PROGRESS: 
+        <any ng-if="{{task.progress}}=IN_PROGRESS">
+        {{task.text}}
+        </any>
+     </mat-grid-tile>
+  </mat-grid-list>
+
   </mat-card-content>
+
 </mat-card>
+
 </div>

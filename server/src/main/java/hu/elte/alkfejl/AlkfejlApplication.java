@@ -12,11 +12,13 @@ public class AlkfejlApplication extends WebMvcConfigurerAdapter {
     
     @Autowired
     private AuthInterceptor authInterceptor;
-    
+    /*
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+
         registry.addInterceptor(authInterceptor);
     }
+    */
 
     public static void main(String[] args) {
             SpringApplication.run(AlkfejlApplication.class, args);

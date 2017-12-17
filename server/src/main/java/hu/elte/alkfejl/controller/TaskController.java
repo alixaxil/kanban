@@ -1,11 +1,9 @@
 package hu.elte.alkfejl.controller;
 
 import hu.elte.alkfejl.annotation.Role;
-import hu.elte.alkfejl.entity.Membership;
 import hu.elte.alkfejl.entity.Task;
 import hu.elte.alkfejl.entity.Team;
 import hu.elte.alkfejl.entity.User;
-import hu.elte.alkfejl.repository.MembershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +18,8 @@ import hu.elte.alkfejl.service.SessionService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -31,47 +31,43 @@ public class TaskController {
     @Autowired
     private TeamRepository teamRepository;
     @Autowired
-    private MembershipRepository membershipRepository;
-    @Autowired
     private SessionService sessionService;
     
     
     private Team team;
     
-    public List<User> getUsers(List<Membership> list){
+    public List<User> getUsers(){
             List<User> users = new ArrayList<>();
-            for(Membership item: list){
-                User user = item.getUser();
-                users.add(user);
-            }
             return users;
     }
 
+     /*
+    @GetMapping("")
+    public ResponseEntity<Iterable<Team>> getAll() {
+        Iterable<Team> items = teamRepository.findAll();
+        return ResponseEntity.ok(items);
+    }
+    
+      @GetMapping("/{id}")
+    public ResponseEntity<Team> getOne(@PathVariable Long id) {
+        Team item = teamRepository.findOne(id);
+        return ResponseEntity.ok(item);
+    }
+    */
     
     @Role({User.Role.USER, User.Role.ADMIN})
-    @GetMapping("/list")
-    public String list(@RequestParam(value = "teamName", 
-                                      required = true) String teamName,
-            Model model) {
+    @GetMapping("/list/{id}")
+    public ResponseEntity<Iterable<Task>> list(@PathVariable Long id) {
  
-        Optional<Team> requestedTeam = teamRepository.findByName(teamName);
-        if(requestedTeam.isPresent()) {
+            Team requestedTeam = teamRepository.findOne(id);
+        
             System.out.println("Team found: ");
-            System.out.println(requestedTeam.get().getName());
-            team = requestedTeam.get();
-            Task newTask = new Task();
-            for (Task task : team.getTasks()){
+            System.out.println(requestedTeam.getName());
+            for (Task task : requestedTeam.getTasks()){
                 System.out.println(task.getText());
             }
-            model.addAttribute("tasks", team.getTasks());
-            model.addAttribute("newTask", newTask);
-            model.addAttribute("teamName", teamName);
-            model.addAttribute("members", getUsers(team.getMemberships()));
-        } else {
-            System.out.println("Team not found");
-        }
-        
-        return "tasklist";
+            return ResponseEntity.ok(requestedTeam.getTasks());
+ 
     }
    
     
@@ -90,43 +86,15 @@ public class TaskController {
     
     
     @Role({User.Role.USER, User.Role.ADMIN})
-    @GetMapping("/subscribe")
-    public String subscribeToTeam(@RequestParam(value = "teamName", 
-                                      required = true) String teamName,
-            Model model) {
- 
-        Optional<Team> requestedTeam = teamRepository.findByName(teamName);
-        if(requestedTeam.isPresent()) {
-            Membership membership = new Membership();
-            membership.setTeam(team);
-            membership.setUser(sessionService.getCurrentUser());
-            membershipRepository.save(membership);
-            System.out.println("Member added");
-            
-        } else {
-            System.out.println("Team not found");
-        }
-        
-        model.addAttribute("userName", sessionService.getCurrentUser().getUsername());
-        model.addAttribute("teamName", teamName);
-        return "hello";
-    }
-    
-    
-    @Role({User.Role.USER, User.Role.ADMIN})
     @GetMapping("/assign")
     public String assignTask(@RequestParam(value = "taskId", 
                                       required = true) Long taskId){
         User user = sessionService.getCurrentUser();
         Task task = taskRepository.findOne(taskId);
         Team team = task.getTeam();
-        if(getUsers(team.getMemberships()).contains(user)){
-            task.setAssignee(user);
-            taskRepository.save(task);
-            System.out.println("Assigned");
-        } else {
-            System.out.println("You are not a member of this team!");
-        }
+        task.setAssignee(user);
+        taskRepository.save(task);
+        System.out.println("Assigned");
         return "redirect:/task/list?teamName="+team.getName();
     }
     

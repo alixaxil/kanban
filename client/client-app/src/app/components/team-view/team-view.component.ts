@@ -5,6 +5,8 @@ import { Team } from '../../classes/team';
 import { Task } from '../../classes/task';
 import { TaskService } from '../../services/task.service';
 import { TeamService } from '../../services/team.service';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 @Component({
   selector: 'app-team-view',
@@ -12,6 +14,11 @@ import { TeamService } from '../../services/team.service';
   styleUrls: ['./team-view.component.css'],
   providers: [TeamService, TeamsService]
 })
+
+@NgModule({
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+})
+
 export class TeamViewComponent implements OnInit {
   @Output()
   public createItem: EventEmitter<Task> = new EventEmitter();
@@ -51,7 +58,8 @@ export class TeamViewComponent implements OnInit {
   }
 
   getTasks(): void {
-    this.teamService.getTasks(this.team.id)
+    const id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.teamService.getTasks(id)
       .subscribe(tasks => this.tasks = tasks);
   }
 

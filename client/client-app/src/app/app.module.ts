@@ -15,6 +15,7 @@ import { TaskService, TeamsService, ApiService } from './services/';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import {HttpModule} from '@angular/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 
@@ -36,6 +37,8 @@ import {HttpModule} from '@angular/http';
     HttpModule
   ],
   providers: [TeamsService, TeamsService, AuthService, ApiService ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  
 })
 export class AppModule { }
