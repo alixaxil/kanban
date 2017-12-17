@@ -40,6 +40,10 @@ export class Task {
         return this.progress;
     }
 
+    public getTeamID(): number {
+        return this.teamID;
+    }
+
     public getProgressText(): string {
         return this.progress.toString();
     }

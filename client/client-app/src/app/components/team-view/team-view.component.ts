@@ -43,7 +43,7 @@ export class TeamViewComponent implements OnInit {
     this.createItem.emit(t);
     this.addTask(t);
     this.count++;
-
+    this.refresh();
   }
 
   ngOnInit(): void {
@@ -69,4 +69,7 @@ export class TeamViewComponent implements OnInit {
       .subscribe(tasks => this.tasks = tasks);
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
 }

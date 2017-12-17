@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../services/task.service';
 import { Task, Progress } from '../../classes/task';
 import { TeamService } from '../../services/team.service';
@@ -20,6 +20,7 @@ export class TaskViewComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, 
   private taskService: TaskService,
+  private router: Router,
   private teamService: TeamService) { }
 
   ngOnInit() {
@@ -38,4 +39,5 @@ export class TaskViewComponent implements OnInit {
     this.teamService.changeProgress(id, progress)
     .subscribe(task => this.task = task);
   }
+
 }

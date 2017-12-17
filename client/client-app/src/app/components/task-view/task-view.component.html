@@ -4,6 +4,7 @@
 
         <h1>{{task.text}}</h1>
         <h2>{{task.description}}</h2>
+        <h3>{{task.assignee}}</h3>
 
         <mat-form-field>
             <mat-select [(value)]="selected">
@@ -13,7 +14,7 @@
               <mat-option value="TEST">
                   TEST
               </mat-option>
-              <mat-option value="BLOCKES">
+              <mat-option value="BLOCKED">
                   BLOCKED
               </mat-option>
               <mat-option value="DONE">
@@ -22,6 +23,7 @@
             </mat-select>
           </mat-form-field>
 
+      
     <button mat-raised-button class="mat-primary" 
     (click)="tryProgressChange(selected)">Change progress</button>
 

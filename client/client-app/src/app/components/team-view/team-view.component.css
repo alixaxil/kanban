@@ -2,23 +2,23 @@
     text-align: center;
   }
 
+.addform{
+  display: block;
+  width: 20em;
+}
  .task{
     background-color: #333333; 
     color: #ffffff;
     padding: 2em; 
     height: 8em;
-    width: 16em;  
+    width: 12em;  
     display: block;
     margin-bottom: 1em;
   }
 
 .column {
     float: left;
-    width: 25%;
-}
-
-.button{
-  color: #0fffff
+    width: 20%;
 }
 
 /* Clear floats after the columns */
